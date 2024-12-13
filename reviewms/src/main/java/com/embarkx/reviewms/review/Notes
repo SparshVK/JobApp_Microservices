@@ -1,0 +1,7 @@
+Reviews API Structure
+
+GET /companies/{companyId}/reviews
+POST /companies/{companyId}/reviews     // need Request Body
+GET /companies/{companyId}/reviews/{reviewId}
+PUT /companies/{companyId}/reviews/{reviewId}    // need Request Body
+DELETE /companies/{companyId}/reviews/{reviewId}

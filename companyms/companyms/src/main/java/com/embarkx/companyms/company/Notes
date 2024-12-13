@@ -1,0 +1,7 @@
+Companies API structure
+
+GET /companies
+PUT /companies/{id}     // also need request body
+POST /companies         // we also need Request Body
+DELETE /companies/{id}
+GET /companies/{id}

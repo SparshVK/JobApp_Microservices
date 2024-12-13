@@ -1,0 +1,48 @@
+Rest Template is a class in Spring framework that simplifies the HTTP communication between to microservices
+we can use this for communicating between microservices and it does so by abstracting the lower level details into a very high level
+easy to use methods ...so you can use this particular class to send HTTP requests to your restful web services and also consume the
+responses
+
+why do we need rest template with microservices? To interact between different microservices
+
+What is DTO Pattern (Data Transfer Objects)?
+A design pattern which is used to transfer data between software applications subsystems.
+
+In context of API, DTO's can be useful to design the structure of the data that you want to expose over the API;
+DTO gives you a better control of the structure of DATA as to what users are seeing
+
+    Client side                                                         SERVER
+
+    Job + Company                  Data            <--          Job MS  (User accesses Job microservice, so we want it to show the company also to which that Job belongs by fetching the Company microservice as well
+     JSON object       <--         Transfer
+    (we want to show)              Object          <--          Company MS
+
+
+@LoadBalanced - annotation configures the rest template to use "load balancer client" under the hood and
+this is a client that is capable of using service IDs registered with Eureka, to locate the services.
+so in that situation load balance annotation is needed and it's
+critical when you're working with spring cloud and urea for service Discovery
+
+ZipKin :- An Open Source Distributed Tracing system ...
+Micrometer:- helps us to collect metrics from our application
+            -> acts as a middleman/bridge btw your application and the metrics collection system.
+
+Micrometer : it provides the metrics in a way that can be scraped and stored by variety of monitoring systems okay.., so you have micrometer which is
+collecting metrics and then behind the scenes you can use any monitoring system you want and it will give you a bird eye view of your
+application performance.
+
+On the other hand...we have Zipkin : a distributed tracing system and it tracks the path, that the request takes, as it travels
+through different microservices in your system and it provides you a detailed view of a single request showing you how long each
+step took and what service was responsible for that delay.
+
+Micrometer provides an Application level view with aggregated Metrics overtime, where as Zipkin provides a Request level view.
+
+Problem:
+Configuration Management - configuration Management in the context of software engineering is the practice of managing and controlling
+the configurations of different systems ....and in case of microservices it simply means managing and controlling the configurations
+of different microservices so this is a practice of handling changes systematically so that the system maintains its Integrity over a
+period of time.
+
+Solution : Spring Cloud Config Server
+spring Cloud config server provides a centralized version controlled and secure way of managing configurations across your microservices
+architecture.

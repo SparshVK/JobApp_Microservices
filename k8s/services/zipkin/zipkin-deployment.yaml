@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zipkin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zipkin
+  template:
+    metadata:
+      labels:
+        app: zipkin
+    spec:
+      containers:
+      - name: zipkin
+        image: openzipkin/zipkin:2.23.16
+        ports:
+        - containerPort: 9411
+        resources:
+          requests:
+            memory: "500Mi" # Increased memory to accommodate Zipkin's needs
+            cpu: "300m"     # Adjusted CPU for smoother performance
+          limits:
+            memory: "1Gi"   # Adjusted limits to prevent OOM
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9411
+          initialDelaySeconds: 30 # Allow more time for Zipkin to initialize
+          periodSeconds: 10       # Reduce the frequency of checks
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 9411
+          initialDelaySeconds: 20 # Provide more startup time
+          periodSeconds: 10
+      restartPolicy: Always
